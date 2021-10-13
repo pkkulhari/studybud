@@ -29,9 +29,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['studybud1.herokuapp.com']
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [

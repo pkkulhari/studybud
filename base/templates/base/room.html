@@ -1,4 +1,5 @@
-{% extends 'main.html' %} 
+{% extends 'main.html' %}
+{% load static %} 
 
 {% block content %}
 <main class="profile-page layout layout--2">
@@ -82,7 +83,11 @@
             <p>Hosted By</p>
             <a href="{% url 'user-profile' room.host.id %}" class="room__author">
               <div class="avatar avatar--small">
+                {% if room.host.avatar %}
                 <img src="{{room.host.avatar.url}}" />
+                {% else %}
+                <img src="{% static 'img/avatar.svg' %}" />
+                {% endif %}
               </div>
               <span>@{{room.host}}</span>
             </a>
@@ -98,7 +103,11 @@
                 <div class="thread__author">
                   <a href="{% url 'user-profile' message.user.id %}" class="thread__authorInfo">
                     <div class="avatar avatar--small">
+                      {% if message.user.avatar %}
                       <img src="{{message.user.avatar.url}}" />
+                      {% else %}
+                      <img src="{% static 'img/avatar.svg' %}" />
+                      {% endif %}
                     </div>
                     <span>@{{message.user}}</span>
                   </a>
@@ -148,10 +157,14 @@
         {% for participant in participants %}
         <a href="{% url 'user-profile' participant.id %}" class="participant">
           <div class="avatar avatar--medium">
+            {% if participant.avatar %}
             <img src="{{participant.avatar.url}}" />
+            {% else %}
+            <img src="{% static 'img/avatar.svg' %}" />
+            {% endif %}
           </div>
           <p>
-            {{participant.name}}
+            {{participant.name|default:''}}
             <span>@{{participant}}</span>
           </p>
         </a>

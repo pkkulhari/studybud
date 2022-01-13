@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 import environ
 import django_heroku
+import cloudinary
+import cloudinary_storage
 
 from pathlib import Path
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "base.apps.BaseConfig",
+    "cloudinary",
+    "cloudinary_storage",
 ]
 
 AUTH_USER_MODEL = "base.User"
@@ -135,3 +139,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Cloudinary stuff
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env("CLOUD_NAME"),
+    "API_KEY": env("API_KEY"),
+    "API_SECRET": env("API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"

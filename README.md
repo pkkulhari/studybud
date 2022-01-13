@@ -64,7 +64,7 @@
 
 ### Prerequisites
 
-To setup a development environment, you are required `Python` with `pip`
+To setup a development environment, you are required `Python` with `pip`, Secondly create a account (free plan) on [Cloudinary](cloudinary.com) and get your `CLOUD_NAME`, `API_KEY` and `API_SECRET`
 
 - pip
 
@@ -82,7 +82,7 @@ To setup a development environment, you are required `Python` with `pip`
    ```sh
    cd studybud && pip install -r requirements.txt
    ```
-3. rename `.env-example` file to `.env`
+3. rename `.env-example` file to `.env` (Don't forget to replace dummy cloudinary credentials with yours in `.env` file)
    ```sh
    mv ./.env-example ./.env
    ```

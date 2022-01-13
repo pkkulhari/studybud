@@ -24,9 +24,13 @@
       <div class="header__user">
         <a href="{% url 'user-profile' request.user.id %}">
           <div class="avatar avatar--medium active">
-            <img src="{{request.user.avatar.url}}" />
+            {% if user.avatar %}
+            <img src="{{user.avatar.url}}" />
+            {% else %}
+            <img src="{% static 'img/avatar.svg' %}" />
+            {% endif %}
           </div>
-          <p>{{request.user.name}} <span>@{{request.user}}</span></p>
+          <p>{{request.user.name|default:''}} <span>@{{request.user}}</span></p>
         </a>
         <button class="dropdown-button">
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -63,5 +67,3 @@
     </nav>
   </div>
 </header>
-
-
